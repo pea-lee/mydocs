@@ -1,0 +1,4 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Pealee is Pealee'
+theme = 'hugo-book'

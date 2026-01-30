@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on Pealee is Pealee</title>
+    <link>http://localhost:1313/docs/</link>
+    <description>Recent content in Docs on Pealee is Pealee</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我推的眼鏡</title>
+      <link>http://localhost:1313/docs/0130/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/0130/</guid>
+      <description>&lt;p&gt;身為一枚對玻璃很龜毛的人&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
