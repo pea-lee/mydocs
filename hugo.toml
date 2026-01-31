@@ -1,6 +1,4 @@
 baseURL = 'https://pealee.com/'
-languageCode = 'en-us'
+languageCode = 'zh-tw'
 title = '匹粒不識貓'
 theme = 'hugo-book'
-
-
