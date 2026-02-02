@@ -6,7 +6,7 @@ bookCollapseSection: true
 bookFlatSection: false
 ---
 
-![鯖魚](/images/seadfood/fish003.JPG)
+![鯖魚](/images/seadfood/fish003.jpg)
 
 
 最近回高雄的次數多了一些後，對爸爸有些近身觀察。    
