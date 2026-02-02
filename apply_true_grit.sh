@@ -1,0 +1,116 @@
+#!/bin/bash
+
+# 定義顏色輸出
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+echo -e "${BLUE}開始轉換 pealee.com 為 True Grit Texture Supply 風格...${NC}"
+
+# 1. 建立 assets 資料夾
+mkdir -p assets
+
+# 2. 建立 custom.css
+cat <<EOF > assets/custom.css
+/* True Grit Style for Hugo Book 
+   Target: pealee.com
+*/
+
+/* 引入粗曠的工業風字體 */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+    --body-background: #111111;
+    --body-font-color: #e5e5e5;
+    --section-border: 1px solid #333333;
+    --hint-color-info: #ffcc00; /* 經典工業黃 */
+    --book-menu-width: 16rem;
+}
+
+/* 核心背景：深色 + 顆粒感 (SVG 濾鏡) */
+body {
+    background-color: var(--body-background);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: -0.02em;
+}
+
+/* 側邊欄與導航修改 */
+.book-menu {
+    background-color: #0a0a0a !important;
+    border-right: var(--section-border) !important;
+}
+
+.book-menu nav a {
+    color: var(--body-font-color) !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.book-menu nav a:hover, .book-menu nav a.active {
+    color: var(--hint-color-info) !important;
+    text-decoration: line-through; /* 模仿刪除線選中感 */
+}
+
+/* 標題樣式：巨大、硬派、無圓角 */
+h1, h2, h3, h4 {
+    font-family: 'Archivo Black', sans-serif;
+    text-transform: uppercase;
+    color: var(--hint-color-info) !important;
+    letter-spacing: -1px;
+    margin-top: 2rem;
+    line-height: 1;
+}
+
+h1 { font-size: 3.5rem; border-bottom: 4px solid var(--hint-color-info); padding-bottom: 10px; }
+h2 { font-size: 2rem; border-bottom: 2px solid #333; }
+
+/* 連結樣式 */
+.book-page a {
+    color: var(--hint-color-info);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--hint-color-info);
+}
+
+.book-page a:hover {
+    background-color: var(--hint-color-info);
+    color: #000 !important;
+}
+
+/* 移除所有圓角 */
+* {
+    border-radius: 0 !important;
+}
+
+/* 修改 asciinema 容器外觀（既然你有用到） */
+.ap-wrapper {
+    border: 5px solid #222;
+    padding: 10px;
+    background: #000;
+}
+EOF
+
+echo -e "${GREEN}✅ assets/custom.css 已生成。${NC}"
+
+# 3. 修改 hugo.toml / config.toml 自動啟用自定義 CSS
+CONFIG_FILE=""
+if [ -f "hugo.toml" ]; then
+    CONFIG_FILE="hugo.toml"
+elif [ -f "config.toml" ]; then
+    CONFIG_FILE="config.toml"
+fi
+
+if [ -n "$CONFIG_FILE" ]; then
+    if grep -q "BookStyleChild" "$CONFIG_FILE"; then
+        echo -e "${BLUE}ℹ️ 設定檔中已存在 BookStyleChild，請手動確認其值為 \"custom.css\"${NC}"
+    else
+        echo -e "\n[params]\n  BookStyleChild = \"custom.css\"" >> "$CONFIG_FILE"
+        echo -e "${GREEN}✅ 已自動將 BookStyleChild 設定加入 $CONFIG_FILE${NC}"
+    fi
+else
+    echo -e "${BLUE}❌ 找不到 hugo.toml 或 config.toml，請手動加入 BookStyleChild = \"custom.css\"${NC}"
+fi
+
+echo -e "${BLUE}--------------------------------------------------${NC}"
+echo -e "${GREEN}完成！現在請執行 'hugo server' 查看效果，然後 git push 上傳到 GitHub。${NC}"
