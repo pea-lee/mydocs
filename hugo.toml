@@ -2,3 +2,25 @@ baseURL = 'https://pealee.com/'
 languageCode = 'zh-tw'
 title = '匹粒不識貓'
 theme = 'hugo-book'
+
+[menu]
+
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Docs"
+    url = "/docs/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 3
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
