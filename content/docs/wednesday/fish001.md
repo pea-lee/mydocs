@@ -2,7 +2,7 @@
 ---
 
 title: "討厭鯖魚但想面對"
-weight:20
+weight: 20
 
 ---
 
