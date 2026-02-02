@@ -7,7 +7,7 @@ weight: 20
 ---
 
 
-![鯖魚](/images/seafood/fish003.jpg)
+![鯖魚](/images/seafood/fish003.JPG)
 
 
 最近回高雄的次數多了一些後，對爸爸有些近身觀察。    
