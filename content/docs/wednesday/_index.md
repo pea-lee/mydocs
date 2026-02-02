@@ -8,7 +8,7 @@ bookFlatSection: false
 
 ##星期三吃到的魚
 
-![烤紅尾冬](/images/seafood/fish001.jpeg)
+![烤紅尾冬](/images/seafood/fiah001.jpeg)
 
 
 我住的地方附近有一家奇異的雜貨肉舖，  
