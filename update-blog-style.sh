@@ -1,0 +1,264 @@
+#!/bin/bash
+
+# Hugo Book — 改變整個網站的底色和字體
+# truegrittexturesupply 淺色 blog 風格
+# 使用方法: 在 Hugo 網站根目錄執行
+
+echo "🎨 更新網站風格..."
+echo ""
+
+# ============================================================
+# 1. 先清理之前加的導航列(如果還在的話)
+# ============================================================
+if [ -d "layouts/partials/docs/inject" ]; then
+    rm -f layouts/partials/docs/inject/head.html
+    rm -f layouts/partials/docs/inject/menu-before.html
+    rm -f layouts/partials/docs/inject/head.html.backup
+    rm -f layouts/partials/docs/inject/menu-before.html.backup
+    rmdir layouts/partials/docs/inject 2>/dev/null
+    echo "🗑️  已清除之前的導航列"
+fi
+
+# ============================================================
+# 2. 確保 assets 資料夾存在
+# ============================================================
+mkdir -p assets
+
+# ============================================================
+# 3. 寫入 _variables.scss
+#    這個檔案改變 hugo-book 內部用的變數
+# ============================================================
+echo "📝 寫入 _variables.scss..."
+cat > assets/_variables.scss << 'EOF'
+// ================================================
+// hugo-book 內部變數 override
+// 這裡改的會影響整個主題
+// ================================================
+
+// 頁面內容最大寬度
+$padding-16: 1rem;
+EOF
+
+# ============================================================
+# 4. 寫入 _custom.scss
+#    這裡可以自由寫 CSS，會覆蓋主題樣式
+# ============================================================
+echo "📝 寫入 _custom.scss..."
+cat > assets/_custom.scss << 'EOF'
+// ================================================
+// Google Fonts import
+// Playfair Display = 標題字體 (serif, 雜誌感)
+// Inter           = 內容字體 (clean, 現代)
+// ================================================
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap');
+
+// ================================================
+// 整體底色、字體
+// ================================================
+body {
+  background-color: #faf9f7;          // 米白色背景
+  color: #2c2825;                     // 深棕色文字(不是純黑)
+  font-family: 'Inter', sans-serif;   // 內容用 Inter
+  font-weight: 400;
+}
+
+// ================================================
+// 標題：全部用 Playfair Display
+// ================================================
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #1a1a18;
+  font-weight: 600;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.55rem; }
+h3 { font-size: 1.25rem; }
+
+// ================================================
+// 側邊欄背景
+// ================================================
+.book-menu {
+  background-color: #f5f3f0;          // 比本文略深的米色
+  border-right-color: #e8e4df;
+}
+
+// 側邊欄裡的選單文字
+.book-menu .book-section-all a,
+.book-menu nav a {
+  color: #4a4540;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+// 側邊欄選單懸停
+.book-menu nav a:hover {
+  color: #6b4c2a;
+  text-decoration: none;
+}
+
+// 側邊欄目前頁面（active）
+.book-menu nav a.active,
+.book-menu nav a[aria-current="page"] {
+  color: #6b4c2a;
+  font-weight: 500;
+}
+
+// ================================================
+// 網站標題（左上角）
+// ================================================
+.book-menu .book-brand {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  color: #1a1a18;
+  font-size: 1.2rem;
+}
+
+.book-menu .book-brand:hover {
+  color: #6b4c2a;
+  text-decoration: none;
+}
+
+// ================================================
+// 正文內容區域
+// ================================================
+.book-content,
+.book-page {
+  background-color: #faf9f7;
+}
+
+// 內容文字行距
+.markdown {
+  line-height: 1.75;                  // 舒服的行距
+  font-size: 1rem;
+}
+
+// ================================================
+// 連結顏色
+// ================================================
+.markdown a {
+  color: #6b4c2a;                     // 棕色連結
+  text-decoration: none;
+  border-bottom: 1px solid #c4a97d;   // 底線連結
+}
+
+.markdown a:hover {
+  color: #4a3218;
+  border-bottom-color: #4a3218;
+}
+
+// ================================================
+// 分隔線
+// ================================================
+hr {
+  border: none;
+  border-top: 1px solid #e0dbd4;
+  margin: 2rem 0;
+}
+
+// ================================================
+// 代碼塊
+// ================================================
+.markdown code {
+  background-color: #ede9e3;
+  color: #3d3530;
+  border-radius: 3px;
+  padding: 0.15em 0.4em;
+  font-size: 0.88em;
+}
+
+.markdown pre {
+  background-color: #f0ece6;
+  border: 1px solid #e0dbd4;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.markdown pre code {
+  background: none;
+  padding: 0;
+  color: #3d3530;
+}
+
+// ================================================
+// 引述 (blockquote)
+// ================================================
+.markdown blockquote {
+  border-left: 3px solid #c4a97d;
+  background-color: #f5f2ed;
+  padding: 0.8rem 1.2rem;
+  margin: 1.2rem 0;
+  border-radius: 0 4px 4px 0;
+  color: #4a4540;
+}
+
+// ================================================
+// 表格
+// ================================================
+.markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.markdown th {
+  background-color: #f0ece6;
+  color: #1a1a18;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid #ddd8d0;
+}
+
+.markdown td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid #e8e4df;
+  color: #2c2825;
+}
+
+.markdown tr:hover td {
+  background-color: #f5f2ed;
+}
+
+// ================================================
+// 搜尋框
+// ================================================
+.book-search input {
+  background-color: #f0ece6;
+  border: 1px solid #ddd8d0;
+  border-radius: 4px;
+  color: #2c2825;
+  font-family: 'Inter', sans-serif;
+}
+
+.book-search input:focus {
+  border-color: #c4a97d;
+  outline: none;
+}
+
+// ================================================
+// 頁底
+// ================================================
+.book-footer {
+  background-color: #f0ece6;
+  border-top: 1px solid #e0dbd4;
+  color: #7a756e;
+  font-size: 0.85rem;
+}
+EOF
+
+# ============================================================
+echo ""
+echo "✅ 完成!"
+echo ""
+echo "📋 下一步:"
+echo "   1. 按 Ctrl+C 停止 hugo server"
+echo "   2. 重新執行: hugo server"
+echo "   3. 打開: http://localhost:1313"
+echo ""
+echo "📁 修改過的檔案:"
+echo "   assets/_variables.scss"
+echo "   assets/_custom.scss"
+echo ""
