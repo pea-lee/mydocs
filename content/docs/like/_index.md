@@ -22,6 +22,7 @@ Philip Guston 的畫我沒有特別的感覺，
 但是我喜歡Marion Deuchars 畫的玩具恐龍
 
 ![恐龍特寫](/image/like/20260203_like_a.png)
+
 ![恐龍寬景](/image/like/20260203_like_b.png)
 
 
