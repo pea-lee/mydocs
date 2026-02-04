@@ -1,0 +1,30 @@
+{{ $pages := where .Site.RegularPages "Section" "!=" "" }}
+{{ $pages = $pages.ByDate.Reverse }}
+
+<div class="posts-list">
+{{ range $pages }}
+  <div class="post-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e8e4df;">
+    <h3 style="margin-top: 0;">
+      <a href="{{ .RelPermalink }}" style="text-decoration: none; color: #1a1a18;">
+        {{ .Title }}
+      </a>
+    </h3>
+    
+    {{ if .Date }}
+    <div style="font-size: 0.875rem; color: #7a756e; margin-bottom: 0.5rem;">
+      {{ .Date.Format "2006年01月02日" }}
+    </div>
+    {{ end }}
+    
+    {{ if .Summary }}
+    <div style="color: #4a4540; line-height: 1.6;">
+      {{ .Summary }}
+    </div>
+    {{ end }}
+    
+    <a href="{{ .RelPermalink }}" style="font-size: 0.875rem; color: #6b4c2a; text-decoration: none; border-bottom: 1px solid #c4a97d;">
+      閱讀全文 →
+    </a>
+  </div>
+{{ end }}
+</div>
