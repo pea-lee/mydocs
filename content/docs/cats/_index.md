@@ -1,10 +1,4 @@
 ---
-title: "_index"
-date: 2026-02-04
----
-
-
----
 title: "襲擊貓咪的證據"
 weight: 5
 bookCollapseSection: true
