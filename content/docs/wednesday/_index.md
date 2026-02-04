@@ -1,3 +1,8 @@
+---
+title: "_index"
+date: 2026-02-02
+---
+
 
 ---
 title: "Wednesday"

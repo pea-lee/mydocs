@@ -1,5 +1,6 @@
 ---
 title: "喜歡的"
+date: 2026-02-03
 weight: 4
 bookCollapseSection: true
 bookFlatSection: false
