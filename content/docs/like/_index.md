@@ -1,6 +1,5 @@
 ---
 title: "喜歡的"
-date: 2026-02-03
 weight: 4
 bookCollapseSection: true
 bookFlatSection: false
@@ -9,8 +8,10 @@ bookFlatSection: false
 讀Marion Deuchars 的 《Do-art Art Classroom》 
 她介紹了一位自學的藝術家Philip Guston  
 
-他有一段時間畫具象畫（描繪的題材是看得懂的東西）  
-有一段時間畫抽象畫（描繪的題材是看不見的東西）  
+他有一段時間畫具象畫.   
+（描繪的題材是看得懂的東西）  
+有一段時間畫抽象畫.   
+（描繪的題材是看不見的東西）  
 最後他決定畫自己喜歡的東西 
 
 加斯頓的作品很卡通，
