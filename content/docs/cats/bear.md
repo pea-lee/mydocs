@@ -15,4 +15,4 @@ bookFlatSection: false
 
 我還有一些他們的可愛照片
 
-![福咪小時候](/images/cats/260205_bear_c.JPG)
+![六張犁店](/images/cats/260205_bear_c.JPG)
