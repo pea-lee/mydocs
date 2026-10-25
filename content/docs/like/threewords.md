@@ -1,6 +1,5 @@
 ---
 title: "三張字"
-date: 2026-10-26
 ---
 
 ![書法作品](/images/like/261026_like_a.jpeg)
