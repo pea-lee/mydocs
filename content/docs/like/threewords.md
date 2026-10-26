@@ -7,7 +7,7 @@ title: "三張字"
 第一張是好看的字，
 對於布局，對於豎和橫的古樸。
 
-![神閒](/images/like/261026_like_b.png)
+![神閒](/images/like/261026_like_b.jpeg)
 
 第二張是我需要的字。
 

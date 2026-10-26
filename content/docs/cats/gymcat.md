@@ -9,4 +9,4 @@ bookFlatSection: false
 是店長級數的店貓喔！
 
 
-![健身房的三花](/images/cats/260205_gym_d.JPG)
+![健身房的三花](/images/cats/260205_gym_d.jpeg)
